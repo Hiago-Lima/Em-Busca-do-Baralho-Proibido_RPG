@@ -19,4 +19,16 @@ void initialize_graph(adjacency_matrix *graph, int number_vertice){
     }
 }
 
+void add_node(adjacency_matrix *graph, int x, int j){
+
+    graph->matriz[x][j] = 1;
+
+}
+
+void remove_node(adjacency_matrix *graph, int x, int j){
+
+    graph->matriz[x][j] = 0;
+
+}
+
 #endif            
