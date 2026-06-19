@@ -1,34 +1,44 @@
 //o comportamento propriamente dito usando o FSM
-//o comportamento propriamente dito usando o FSM
 #ifndef FSM_H
 #define FSM_H
 #define MAXNODES 3//definição dos nós para usar o gráfo direcionado, a partir da matriz de adjacência
+#include <stdio.h>
+#include <stdlib.h>
 
-typedef struct {
-		int vertice_number;
-		int matriz[MAXNODES][MAXNODES];
-}adjacency_matrix;
+typedef struct node{
+	int destination;
+	struct node * next;
+}node;
 
-void initialize_graph(adjacency_matrix *graph, int number_vertice){
-    graph->vertice_number = number_vertice;
+typedef struct adjacency_list{
+	node * head;
+}adjacency_list;
 
-    for (int i = 0; i < number_vertice; i++){
-        for (int j = 0; j < number_vertice; j++){
-            graph->matriz[i][j] = 0;
-        }
-    }
+typedef struct graph{
+	int number_vertice;
+	adjacency_list * vector_adjacency_list;
+}graph;
+
+node * creating_node(int destination){
+    node * new_node = (node*)malloc(sizeof(node));
+    new_node->destination = destination;
+    new_node->next = NULL;
+	
+	return new_node;
 }
 
-void add_node(adjacency_matrix *graph, int x, int j){
+graph * creating_graph(int number_vertice){
+	graph * new_graph = (graph *)malloc(sizeof(graph));
+	new_graph->number_vertice = number_vertice;
 
-    graph->matriz[x][j] = 1;
+	new_graph->vector_adjacency_list = (adjacency_list *)malloc(number_vertice * sizeof(adjacency_list));
 
+	for(int i = 0; i < number_vertice; i++){
+		new_graph->vector_adjacency_list[i].head = NULL;
+	}
+
+	return new_graph;
 }
 
-void remove_node(adjacency_matrix *graph, int x, int j){
-
-    graph->matriz[x][j] = 0;
-
-}
 
 #endif            
