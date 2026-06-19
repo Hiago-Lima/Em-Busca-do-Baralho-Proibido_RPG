@@ -1,7 +1,6 @@
 //o comportamento propriamente dito usando o FSM
 #ifndef FSM_H
 #define FSM_H
-#define MAXNODES 3//definição dos nós para usar o gráfo direcionado, a partir da matriz de adjacência
 #include <stdio.h>
 #include <stdlib.h>
 
