@@ -39,5 +39,5 @@ graph * creating_graph(int number_vertice){
 	return new_graph;
 }
 
-
+//dale
 #endif            
