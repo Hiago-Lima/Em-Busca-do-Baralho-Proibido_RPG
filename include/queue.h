@@ -13,6 +13,6 @@ typedef struct Queue
 } Turn_Queue;
 void initqueue(Turn_Queue *q);                 // inicializa a fila
 void insertqueue(Turn_Queue *q, Character *c); // insere um personagem na fila
-Character *turnqueuepeek(Turn_Queue *q);       // retorna o personagem que está na frente, não remove ele da fila
-void cyclequeue(Turn_Queue *q);                // faz a fila circular, ou seja, o personagem que estava na frente vai para o final da fila
+Character *queue_peek(const Turn_Queue *q);    // retorna o personagem que está na frente, não remove ele da fila
+void queue_cycle(Turn_Queue *q);               // faz a fila circular, ou seja, o personagem que estava na frente vai para o final da fila
 #endif
