@@ -11,22 +11,24 @@
 
 int main(void)
 {
-    //Semente aleatória — garante variação diferente a cada execução 
+    // Semente aleatória — garante variação diferente a cada execução
     srand((unsigned int)time(NULL));
 
-    // Variáveis principais do jogo 
+    // Variáveis principais do jogo
     Character player;
     ActionStack history;
     stack_init(&history);
 
-    // Narrativa inicial 
+    // Narrativa inicial
     story_title_screen();
+
     HeroID hero = story_character_select(&player);
     story_intro(hero);
 
-    // FASE 1: Touro Guerreiro 
+    // FASE 1: Touro Guerreiro
     story_phase_intro(0);
     Enemy bull;
+    
     enemy_create_bull(&bull);
 
     CombatResult r1 = combat_run(&player, &bull, &history);
@@ -38,7 +40,7 @@ int main(void)
         return 0;
     }
 
-    // FASE 2: Mago Negro 
+    // FASE 2: Mago Negro
     story_phase_intro(1);
     Enemy mage;
     enemy_create_dark_mage(&mage);
@@ -52,7 +54,7 @@ int main(void)
         return 0;
     }
 
-    // FASE 3: Dragão Branco de Olhos Azuis 
+    // FASE 3: Dragão Branco de Olhos Azuis
     story_phase_intro(2);
     Enemy dragon;
     enemy_create_blue_eyes(&dragon);
@@ -66,7 +68,7 @@ int main(void)
         return 0;
     }
 
-    // Vitória final 
+    // Vitória final
     story_victory(&history);
 
     return 0;

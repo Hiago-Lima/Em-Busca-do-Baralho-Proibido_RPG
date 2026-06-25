@@ -57,18 +57,18 @@ HeroID story_character_select(Character *player)
     // seiya
     print_saints();
     printf(ANSI_BLUE ANSI_BOLD "  1. SEIYA\n" ANSI_RESET);
-    printf("     HP: 150 | ATK: 20 | DEF: 10 | VEL: 15\n");
+    printf("     HP: 150 | ATK: 25 | DEF: 10 | VEL: 15\n");
     printf("     O obstinado Cavaleiro de Pegaso que se move num piscar de olhos, sempre pronto para superar qualquer barreira pela justica e por Atena.\n\n");
 
     // shun
 
     printf(ANSI_MAGENTA ANSI_BOLD "  2. SHUN\n" ANSI_RESET);
-    printf("     HP: 180 | ATK: 16 | DEF: 16 | VEL: 11\n");
+    printf("     HP: 180 | ATK: 20 | DEF: 16 | VEL: 11\n");
     printf("     O pacifista Cavaleiro de Andromeda que ergue uma barreira intransponivel ao seu redor, mas prefere sempre a via da diplomacia e da protecao.\n\n");
 
     // shiryu
     printf(ANSI_GREEN ANSI_BOLD "  3. SHIRYU\n" ANSI_RESET);
-    printf("     HP: 120 | ATK: 26 | DEF:  8 | VEL: 13\n");
+    printf("     HP: 120 | ATK: 30 | DEF:  8 | VEL: 13\n");
     printf("     O honrado Cavaleiro de Dragao, cuja sabedoria e lealdade guiam um impacto devastador capaz de reverter o fluxo das maiores mares.\n\n");
 
     printf(ANSI_BOLD "  Escolha: " ANSI_RESET);
@@ -78,13 +78,13 @@ HeroID story_character_select(Character *player)
     switch (choice)
     {
     case 1:
-        character_init(player, "Seiya", 150, 20, 10, 15);
+        character_init(player, "Seiya", 150, 25, 10, 15);
         return HERO_SEIYA;
     case 2:
-        character_init(player, "Shun", 180, 16, 16, 11);
+        character_init(player, "Shun", 180, 20, 16, 11);
         return HERO_SHUN;
     default:
-        character_init(player, "Shiryu", 120, 26, 8, 13);
+        character_init(player, "Shiryu", 120, 30, 8, 13);
         return HERO_SHIRYU;
     }
 }
@@ -116,7 +116,7 @@ void story_intro(HeroID hero)
     case HERO_SHUN:
         printf("  Shun conhecia as lendas do Baralho Proibido.\n\n");
         printf("  Pegasus surgiu diante dele com um sorriso.\n");
-        printf("  \"Ah, a famoso Shun. Sua corrente é lendaria.\n");
+        printf("  \"Ah, a famoso Shun. Sua corrente eh lendaria.\n");
         printf("   Mas sera que resistira aos Monstros de Duelo\n");
         printf("   do meu reino?\"\n\n");
         printf("  Shun ergueu suas correntes.\n");
@@ -156,7 +156,10 @@ void story_phase_intro(int phase)
         printf("  Das sombras surge uma figura colossal.\n");
         printf("  Chifres apontados para o ceu. Olhos de brasa.\n\n");
         printf("  O TOURO GUERREIRO barra seu caminho.\n");
-        printf("  Ele nao negocia. Ele apenas ataca com seu Machado Enorme.\n");
+        ui_pause();
+        printf(ANSI_RED);
+        printf(ANSI_BOLD "  Ele com seu tremendo poder que destroi seus inimigos com um unico golpe do seu machado.\n");
+        draw_ascii_ox();
         printf(ANSI_RESET);
         break;
 
@@ -166,7 +169,10 @@ void story_phase_intro(int phase)
         printf("  Risadas ecoam pelas paredes de pedra.\n");
         printf("  Uma figura encurvada emerge da escuridao.\n\n");
         printf("  O MAGO NEGRO ergue seu cajado.\n");
-        printf("  Astuto. Paciente. Perigoso.\n");
+        ui_pause();
+        printf(ANSI_MAGENTA);
+        printf(ANSI_BOLD "  O mago definitivo em termos de ataque e defesa.\n");
+        draw_ascii_mage();
         printf(ANSI_RESET);
         break;
 
@@ -176,8 +182,10 @@ void story_phase_intro(int phase)
         printf("  Uma sombra imensa cobre tudo.\n");
         printf("  Asas brancas se abrem bloqueando a luz.\n\n");
         printf("  O DRAGAO BRANCO DE OLHOS AZUIS.\n");
-        printf("  A criatura final do Baralho Proibido.\n");
-        printf("  Nao ha como voltar . E agora ou nunca.\n");
+        ui_pause();
+        printf(ANSI_CYAN);
+        printf(ANSI_BOLD "  Este dragao lendario eh uma poderosa maquina de destruicao. Praticamente invencivel, muito poucos enfrentaram esta magnifica criatura e viveram para contar a historia.\n");
+        draw_ascii_dragon();
         printf(ANSI_RESET);
         break;
     }

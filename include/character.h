@@ -1,7 +1,7 @@
 // dados e regras dos personagens
 #ifndef CHARACTER_H
 #define CHARACTER_H
-#define NAME_SIZE 10
+#define NAME_SIZE 30
 typedef struct
 {
     int defense_bonus;   // bonus de defesa, usado para calcular o dano recebido
