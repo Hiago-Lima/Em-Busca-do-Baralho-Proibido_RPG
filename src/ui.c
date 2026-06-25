@@ -82,34 +82,21 @@ static void ui_draw_hp_bar(int hp, int hp_max, int width)
     for (int i = 0; i < width; i++)
     {
         if (i < filled)
-            printf("\xe2\x96\x88"); /* █ */
+            printf("#"); /* █ */
         else
-            printf("\xe2\x96\x91"); /* ░ */
+            printf("#"); /* ░ */
     }
     printf(ANSI_RESET "]");
 }
 
-/* ═══════════════════════════════════════════════════════════════════
- *  ui_draw_combat_header
- *
- *  Exibe o painel principal do combate a cada turno:
- *
- *  ╔══════════════════════════════════╗
- *  ║   EM BUSCA DO BARALHO PROIBIDO  ║
- *  ╚══════════════════════════════════╝
- *  Crono            HP:  80/120  [████████░░░░]
- *  ──────────────────────────────────────
- *  Touro Guerreiro  HP: 100/120  [████████████]
- *  Estado da IA: [ ATACAR ]
- * ═══════════════════════════════════════════════════════════════════ */
 void ui_draw_combat_header(const Character *player,
                            const Character *enemy,
                            const FSM *enemy_fsm)
 {
     printf(ANSI_BOLD
-           "╔══════════════════════════════════════╗\n"
-           "║    EM BUSCA DO BARALHO PROIBIDO      ║\n"
-           "╚══════════════════════════════════════╝\n" ANSI_RESET);
+           "  ########################################\n"
+           "  #    EM BUSCA DO BARALHO PROIBIDO      #\n"
+           "  ########################################\n" ANSI_RESET);
 
     /* Linha do jogador */
     printf(ANSI_BLUE ANSI_BOLD "  %-20s" ANSI_RESET, player->name);
@@ -121,7 +108,7 @@ void ui_draw_combat_header(const Character *player,
         printf(ANSI_CYAN "  [DEFENDENDO]" ANSI_RESET);
     printf("\n");
 
-    printf("  ──────────────────────────────────────\n");
+    printf("  ______________________________________\n");
 
     /* Linha do inimigo */
     printf(ANSI_RED ANSI_BOLD "  %-20s" ANSI_RESET, enemy->name);
@@ -133,7 +120,7 @@ void ui_draw_combat_header(const Character *player,
     printf("  Estado do inimigo: " ANSI_BOLD ANSI_MAGENTA "[ %s ]" ANSI_RESET "\n",
            fsm_current_label(enemy_fsm));
 
-    printf("  ══════════════════════════════════════\n\n");
+    printf("  ______________________________________\n\n");
 }
 
 /* ═══════════════════════════════════════════════════════════════════

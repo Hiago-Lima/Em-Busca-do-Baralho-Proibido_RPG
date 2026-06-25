@@ -3,26 +3,21 @@
 #include "ui.h"
 #include "ascii.h"
 
-/* ═══════════════════════════════════════════════════════════════════
- *  story_title_screen
- *
- *  Primeira coisa que o jogador vê.
- *  Inspirado no estilo visual de Yu-Gi-Oh.
- * ═══════════════════════════════════════════════════════════════════ */
+//  Primeira coisa que o jogador ve ao iniciar o jogo. Exibe o título, a arte ASCII e uma breve introdução.
 void story_title_screen(void)
 {
     ui_clear();
 
     printf(ANSI_YELLOW ANSI_BOLD);
     printf("\n\n");
-    printf("       //     EM BUSCA DO BARALHO PROIBIDO         //\n");
+    printf("       ||     EM BUSCA DO BARALHO PROIBIDO         ||\n");
     printf(ANSI_RESET);
 
     printf(ANSI_CYAN);
     draw_ascii_art_pegasus();
     printf("\n     Pegasus te desafia a cruzar o Reino dos Duelistas.\n");
     printf("       Tres criaturas se erguem entre voce e o baralho.\n");
-    printf("       Apenas o com o coração mais valente vencera!!!.\n");
+    printf("       Apenas o coracao mais valente vencera!!!.\n");
     printf(ANSI_RESET);
 
     ui_pause();
@@ -34,26 +29,13 @@ void story_title_screen(void)
  *  Exibidos durante a seleção. Estilo simples que funciona em
  *  qualquer terminal sem dependências externas.
  * ═══════════════════════════════════════════════════════════════════ */
-static void print_crono(void)
+static void print_saints(void)
 {
-    printf(ANSI_BLUE);
-    printf("         )  CRONO  (\n");
-    draw_ascii_art_crono();
+    printf(ANSI_GRAY);
+    draw_ascii_trio();
     printf(ANSI_RESET);
 }
 
-static void print_marie(void)
-{
-    printf(ANSI_MAGENTA);
-    printf("         \\  MARIE  /\n");
-    printf(ANSI_RESET);
-}
-
-static void print_lucca(void)
-{
-    printf(ANSI_GREEN);
-    printf("        |   LUCCA   |\n");
-}
 /* ═══════════════════════════════════════════════════════════════════
  *  story_character_select
  *
@@ -62,9 +44,9 @@ static void print_lucca(void)
  *  Retorna o HeroID para que story_intro saiba qual história contar.
  *
  *  Cada herói tem uma especialidade diferente:
- *    Crono → equilibrado, velocidade alta
- *    Marie → defesa alta, mais tanque
- *    Lucca → ataque alto, mais frágil
+ *    Seiya → equilibrado, velocidade alta
+ *    Shun → defesa alta, mais tanque
+ *    Shiryu → ataque alto, mais frágil
  * ═══════════════════════════════════════════════════════════════════ */
 HeroID story_character_select(Character *player)
 {
@@ -72,23 +54,22 @@ HeroID story_character_select(Character *player)
 
     printf(ANSI_BOLD "\n  === ESCOLHA SEU PERSONAGEM ===\n\n" ANSI_RESET);
 
-    /* Crono */
-    print_crono();
-    printf(ANSI_BLUE ANSI_BOLD "  1. CRONO\n" ANSI_RESET);
-    printf("     HP: 120 | ATK: 20 | DEF: 10 | VEL: 15\n");
-    printf("     Guerreiro equilibrado. Age primeiro.\n\n");
+    // seiya
+    print_saints();
+    printf(ANSI_BLUE ANSI_BOLD "  1. SEIYA\n" ANSI_RESET);
+    printf("     HP: 150 | ATK: 20 | DEF: 10 | VEL: 15\n");
+    printf("     O obstinado Cavaleiro de Pegaso que se move num piscar de olhos, sempre pronto para superar qualquer barreira pela justica e por Atena.\n\n");
 
-    /* Marie */
-    print_marie();
-    printf(ANSI_MAGENTA ANSI_BOLD "  2. MARIE\n" ANSI_RESET);
-    printf("     HP: 140 | ATK: 16 | DEF: 16 | VEL: 11\n");
-    printf("     Tanque resistente. Dificil de derrubar.\n\n");
+    // shun
 
-    /* Lucca */
-    print_lucca();
-    printf(ANSI_GREEN ANSI_BOLD "  3. LUCCA\n" ANSI_RESET);
-    printf("     HP: 100 | ATK: 26 | DEF:  8 | VEL: 13\n");
-    printf("     Alta ofensiva. Fragil mas devastadora.\n\n");
+    printf(ANSI_MAGENTA ANSI_BOLD "  2. SHUN\n" ANSI_RESET);
+    printf("     HP: 180 | ATK: 16 | DEF: 16 | VEL: 11\n");
+    printf("     O pacifista Cavaleiro de Andromeda que ergue uma barreira intransponivel ao seu redor, mas prefere sempre a via da diplomacia e da protecao.\n\n");
+
+    // shiryu
+    printf(ANSI_GREEN ANSI_BOLD "  3. SHIRYU\n" ANSI_RESET);
+    printf("     HP: 120 | ATK: 26 | DEF:  8 | VEL: 13\n");
+    printf("     O honrado Cavaleiro de Dragao, cuja sabedoria e lealdade guiam um impacto devastador capaz de reverter o fluxo das maiores mares.\n\n");
 
     printf(ANSI_BOLD "  Escolha: " ANSI_RESET);
     int choice = ui_read_int(1, 3);
@@ -97,14 +78,14 @@ HeroID story_character_select(Character *player)
     switch (choice)
     {
     case 1:
-        character_init(player, "Crono", 120, 20, 10, 15);
-        return HERO_CRONO;
+        character_init(player, "Seiya", 150, 20, 10, 15);
+        return HERO_SEIYA;
     case 2:
-        character_init(player, "Marie", 140, 16, 16, 11);
-        return HERO_MARIE;
+        character_init(player, "Shun", 180, 16, 16, 11);
+        return HERO_SHUN;
     default:
-        character_init(player, "Lucca", 100, 26, 8, 13);
-        return HERO_LUCCA;
+        character_init(player, "Shiryu", 120, 26, 8, 13);
+        return HERO_SHIRYU;
     }
 }
 
@@ -122,33 +103,33 @@ void story_intro(HeroID hero)
 
     switch (hero)
     {
-    case HERO_CRONO:
+    case HERO_SEIYA:
         printf("  O reino estava em paz quando Pegasus apareceu.\n\n");
-        printf("  \"Crono...\" sua voz ecoou pelo salao.\n");
-        printf("  \"Dizem que voce e o mais forte desta era.\n");
+        printf("  \"Seiya...\" sua voz ecoou pelo salao.\n");
+        printf("  \"Dizem que voce e o mais forte dos guerreiros de Atena.\n");
         printf("   Prove isso. Chegue ate o fim do meu reino\n");
         printf("   e o Baralho Proibido sera seu.\"\n\n");
-        printf("  Crono apertou a empunhadura da espada.\n");
+        printf("  Seiya vestiu sua Armadura e saiu em busca do desafio.\n");
         printf("  Nao era uma escolha. Era um destino.\n");
         break;
 
-    case HERO_MARIE:
-        printf("  Marie conhecia as lendas do Baralho Proibido.\n\n");
-        printf("  Pegasus surgiu diante dela com um sorriso.\n");
-        printf("  \"Ah, a famosa Marie. Sua defesa e lendaria.\n");
-        printf("   Mas sera que resistira aos guardioes\n");
+    case HERO_SHUN:
+        printf("  Shun conhecia as lendas do Baralho Proibido.\n\n");
+        printf("  Pegasus surgiu diante dele com um sorriso.\n");
+        printf("  \"Ah, a famoso Shun. Sua corrente é lendaria.\n");
+        printf("   Mas sera que resistira aos Monstros de Duelo\n");
         printf("   do meu reino?\"\n\n");
-        printf("  Marie ergueu o escudo sem hesitar.\n");
-        printf("  Nenhum guardiao a derrubaria.\n");
+        printf("  Shun ergueu suas correntes.\n");
+        printf("  Nenhuma criatura o derrubaria.\n");
         break;
 
-    case HERO_LUCCA:
-        printf("  Lucca havia estudado o Baralho Proibido por anos.\n\n");
-        printf("  \"Interessante...\" disse Pegasus, ajustando o monculo.\n");
-        printf("  \"Uma cientista. Voce calcula cada movimento.\n");
-        printf("   Vamos ver se seus calculos resistem\n");
+    case HERO_SHIRYU:
+        printf("  Shiryu havia estudado o Baralho Proibido por anos.\n\n");
+        printf("  \"Interessante...\" disse Pegasus, ajustando o olho do milenio.\n");
+        printf("  \"Voce enfrenta cada desafio com coragem, Shiryu.\n");
+        printf("   Vamos ver se sua determinacao vai resistir\n");
         printf("   ao caos do meu reino.\"\n\n");
-        printf("  Lucca sorriu. Ela ja havia calculado tudo.\n");
+        printf("  Shiryu sorriu. Ele ja havia decidido sua jornada.\n");
         break;
     }
 
@@ -175,7 +156,7 @@ void story_phase_intro(int phase)
         printf("  Das sombras surge uma figura colossal.\n");
         printf("  Chifres apontados para o ceu. Olhos de brasa.\n\n");
         printf("  O TOURO GUERREIRO barra seu caminho.\n");
-        printf("  Ele nao negocia. Ele apenas ataca.\n");
+        printf("  Ele nao negocia. Ele apenas ataca com seu Machado Enorme.\n");
         printf(ANSI_RESET);
         break;
 
@@ -195,8 +176,8 @@ void story_phase_intro(int phase)
         printf("  Uma sombra imensa cobre tudo.\n");
         printf("  Asas brancas se abrem bloqueando a luz.\n\n");
         printf("  O DRAGAO BRANCO DE OLHOS AZUIS.\n");
-        printf("  O guardiao final do Baralho Proibido.\n");
-        printf("  Nao ha retreat. E agora ou nunca.\n");
+        printf("  A criatura final do Baralho Proibido.\n");
+        printf("  Nao ha como voltar . E agora ou nunca.\n");
         printf(ANSI_RESET);
         break;
     }
@@ -216,12 +197,12 @@ void story_victory(ActionStack *history)
     ui_clear();
 
     printf(ANSI_YELLOW ANSI_BOLD);
-    printf("\n╔══════════════════════════════════════════╗\n");
-    printf("  ║         PARABENS, DUELISTA!              ║\n");
-    printf("  ║                                          ║\n");
-    printf("  ║   O Baralho Proibido e seu.              ║\n");
-    printf("  ║   Pegasus inclina a cabeca em respeito.  ║\n");
-    printf("  ╚══════════════════════════════════════════╝\n");
+    printf("\n############################################\n");
+    printf("  #         PARABENS, DUELISTA!              #\n");
+    printf("  #                                          #\n");
+    printf("  #   O Baralho Proibido e seu.              #\n");
+    printf("  #   Pegasus inclina a cabeca em respeito.  #\n");
+    printf("  ############################################\n");
     printf(ANSI_RESET);
 
     /* Exibe o log completo desempilhando */
@@ -246,12 +227,12 @@ void story_game_over(void)
     ui_clear();
 
     printf(ANSI_RED ANSI_BOLD);
-    printf("\n╔══════════════════════════════════════════╗\n");
-    printf("  ║              GAME OVER                   ║\n");
-    printf("  ║                                          ║\n");
-    printf("  ║   Sua jornada termina aqui, duelista.    ║\n");
-    printf("  ║   O Baralho Proibido permanece intocado. ║\n");
-    printf("  ╚══════════════════════════════════════════╝\n");
+    printf("\n  ############################################\n");
+    printf("  #              GAME OVER                   #\n");
+    printf("  #                                          #\n");
+    printf("  #   Sua jornada termina aqui, duelista.    #\n");
+    printf("  #   O Baralho Proibido permanece intocado. #\n");
+    printf("  ############################################\n");
     printf(ANSI_RESET);
 
     ui_pause();
