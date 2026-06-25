@@ -5,9 +5,11 @@
 #include <stdlib.h>
 #include "character.h"
 
+// um no representa um estado do FSM, e cada no tem uma lista de arestas
+// arestas que possuem condições para ir para outro estado, e cada aresta tem uma prioridade
 typedef enum
-{ // enum é so uma enumeração atk =0 ,atk forte = 1 e etc
-  // aqui é so como se fosse um vetor de numeros
+{						 // enum é so uma enumeração atk =0 ,atk forte = 1 e etc
+						 // aqui é so como se fosse um vetor de numeros
 	STATE_ATTACK = 0,	 // atk
 	STATE_STRONG_ATTACK, // atk forte
 	STATE_DEFEND,		 // defender

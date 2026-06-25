@@ -22,7 +22,7 @@ void character_init(Character *c, const char *name, int hp, int atk, int def, in
 
 int character_take_damage(Character *c, int damage);                   // dano tomado
 int character_calculate_damage(const Character *attacker, int strong); // dano causado, o strong é um multiplicador de dano, usado para ataques fortes
-void character_tickeffects(Character *c);                              // efeito da defesa, ao defender aumenta a def um pouco
+void character_tick_effects(Character *c);                             // efeito da defesa, ao defender aumenta a def um pouco
 int character_is_alive(const Character *c);                            // verifica se o personagem ainda está vivo, ou seja, se o hp é maior que 0
 
 #endif // CHARACTER_H
