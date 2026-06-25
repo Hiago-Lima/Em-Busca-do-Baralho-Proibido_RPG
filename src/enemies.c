@@ -36,7 +36,7 @@ static int cond_player_hp_below_50(const FSMContext *ctx)
 
 void enemy_create_bull(Enemy *e)
 {
-    character_init(&e->character, "Touro Guerreiro", 120, 22, 8, 12);
+    character_init(&e->character, "Touro Guerreiro", 170, 22, 8, 12);
     fsm_init(&e->fsm, STATE_ATTACK);
 
     /* De ATACAR */
@@ -56,7 +56,7 @@ void enemy_create_bull(Enemy *e)
 
 void enemy_create_dark_mage(Enemy *e)
 {
-    character_init(&e->character, "Mago Negro", 100, 18, 14, 10);
+    character_init(&e->character, "Mago Negro", 250, 18, 14, 10);
     fsm_init(&e->fsm, STATE_ATTACK);
 
     /* De ATACAR */
@@ -76,7 +76,7 @@ void enemy_create_dark_mage(Enemy *e)
 
 void enemy_create_blue_eyes(Enemy *e)
 {
-    character_init(&e->character, "Dragao Branco de Olhos Azuis", 200, 28, 15, 8);
+    character_init(&e->character, "Dragao Branco de Olhos Azuis", 300, 28, 15, 8);
     fsm_init(&e->fsm, STATE_DEFEND);
 
     // De DEFENDER

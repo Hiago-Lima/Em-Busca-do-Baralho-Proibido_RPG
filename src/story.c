@@ -54,7 +54,6 @@ static void print_lucca(void)
     printf(ANSI_GREEN);
     printf("        |   LUCCA   |\n");
 }
-draw_ascii_art_trio();
 /* ═══════════════════════════════════════════════════════════════════
  *  story_character_select
  *
