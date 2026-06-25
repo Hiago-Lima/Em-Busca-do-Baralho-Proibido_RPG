@@ -37,12 +37,7 @@ void story_title_screen(void)
 static void print_crono(void)
 {
     printf(ANSI_BLUE);
-    printf("          /\\_____/\\\n");
-    printf("         /  o   o  \\\n");
-    printf("        ( ==  ^  == )\n");
     printf("         )  CRONO  (\n");
-    printf("        (           )\n");
-    printf("       ( (  )   (  ) )\n");
     draw_ascii_art_crono();
     printf(ANSI_RESET);
 }
@@ -50,25 +45,14 @@ static void print_crono(void)
 static void print_marie(void)
 {
     printf(ANSI_MAGENTA);
-    printf("          .~~~~~~~.\n");
-    printf("         /  ^   ^  \\\n");
-    printf("        |  (  w  )  |\n");
     printf("         \\  MARIE  /\n");
-    printf("          `~~~~~~~'\n");
-    printf("         /|       |\\\n");
     printf(ANSI_RESET);
 }
 
 static void print_lucca(void)
 {
     printf(ANSI_GREEN);
-    printf("          _________\n");
-    printf("         /  @   @  \\\n");
-    printf("        |   (___) o |\n");
     printf("        |   LUCCA   |\n");
-    printf("         \\_________/\n");
-    printf("          |       |\n");
-    printf(ANSI_RESET);
 }
 draw_ascii_art_trio();
 /* ═══════════════════════════════════════════════════════════════════
