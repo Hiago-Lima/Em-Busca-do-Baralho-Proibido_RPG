@@ -205,7 +205,7 @@ void story_victory(ActionStack *history)
     ui_clear();
 
     printf(ANSI_YELLOW ANSI_BOLD);
-    printf("\n############################################\n");
+    printf("\n  ############################################\n");
     printf("  #         PARABENS, DUELISTA!              #\n");
     printf("  #                                          #\n");
     printf("  #   O Baralho Proibido e seu.              #\n");
@@ -225,6 +225,7 @@ void story_victory(ActionStack *history)
     }
 
     printf("\n");
+    ui_pause();
 }
 
 /* ═══════════════════════════════════════════════════════════════════

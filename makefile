@@ -1,7 +1,7 @@
 # o arquivo makefile serve para automatizar o processo de compilação do programa, evitando a necessidade de digitar comandos longos no terminal toda vez que quisermos compilar o código
 # declaração das variáveis para o compilador, flags de compilação, arquivos fonte e teste
 CC      = gcc
-CFLAGS  = -Wall -Wextra -g -Iinclude
+CFLAGS  = -Wall -Wextra -g -Iinclude 
 SRC     = src/story.c src/character.c src/stack.c src/queue.c src/fsm.c src/enemies.c src/ui.c src/combat.c
 MAIN    = src/main.c
 TEST    = src/test.c
