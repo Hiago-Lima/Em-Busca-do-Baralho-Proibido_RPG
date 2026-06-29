@@ -4,14 +4,8 @@
 #include "queue.h"
 #include "ui.h"
 
-/* ═══════════════════════════════════════════════════════════════════
- *  player_turn
- *
- *  Exibe o menu, lê a escolha e executa a ação do jogador.
- *  Retorna:
- *     1  →  combate continua
- *    -1  →  jogador fugiu
- * ═══════════════════════════════════════════════════════════════════ */
+// Exibe o menu, lê a escolha e executa a ação do jogador.
+
 static int player_turn(Character *player, Enemy *enemy,
                        ActionStack *history)
 {
@@ -61,12 +55,10 @@ static int player_turn(Character *player, Enemy *enemy,
     return 1;
 }
 
-/* ═══════════════════════════════════════════════════════════════════
- *  enemy_turn
- *
- *  Consulta a FSM para decidir a ação e a executa.
- *  O estado retornado por enemy_think() dita o que o inimigo faz.
- * ═══════════════════════════════════════════════════════════════════ */
+//  enemy_turn
+//  Consulta a FSM para decidir a ação e a executa.
+//  O estado retornado por enemy_think() dita o que o inimigo faz.
+
 static void enemy_turn(Enemy *enemy, Character *player,
                        ActionStack *history)
 {
@@ -117,20 +109,19 @@ static void enemy_turn(Enemy *enemy, Character *player,
     }
 }
 
-/* ═══════════════════════════════════════════════════════════════════
- *  combat_run
- *
- *  Loop principal do combate:
- *
- *  1. Monta a fila ordenada por velocidade
- *  2. A cada iteração:
- *     a. Pega quem age (queue_peek)
- *     b. Processa efeitos temporários (tick)
- *     c. Executa o turno (jogador ou inimigo)
- *     d. Cicla a fila (quem agiu vai pro fim)
- *  3. Para quando alguém morre
- *  4. Retorna o resultado
- * ═══════════════════════════════════════════════════════════════════ */
+/* combat_run
+
+  Loop principal do combate:
+
+  1. Monta a fila ordenada por velocidade
+  2. A cada iteração:
+     a. Pega quem age (queue_peek)
+     b. Processa efeitos temporários (tick)
+     c. Executa o turno (jogador ou inimigo)
+     d. Cicla a fila (quem agiu vai pro fim)
+  3. Para quando alguém morre
+  4. Retorna o resultado
+*/
 CombatResult combat_run(Character *player, Enemy *enemy,
                         ActionStack *history)
 {

@@ -23,12 +23,10 @@ void story_title_screen(void)
     ui_pause();
 }
 
-/* ═══════════════════════════════════════════════════════════════════
- *  ASCII art dos personagens
- *
- *  Exibidos durante a seleção. Estilo simples que funciona em
- *  qualquer terminal sem dependências externas.
- * ═══════════════════════════════════════════════════════════════════ */
+/*ASCII art dos personagens
+
+ Exibidos durante a seleção. Estilo simples que funciona em
+ qualquer terminal sem dependências externas. */
 static void print_saints(void)
 {
     printf(ANSI_GRAY);
@@ -36,18 +34,17 @@ static void print_saints(void)
     printf(ANSI_RESET);
 }
 
-/* ═══════════════════════════════════════════════════════════════════
- *  story_character_select
- *
- *  Exibe os três personagens com seus atributos e ASCII art.
- *  Inicializa o `player` com os atributos do escolhido.
- *  Retorna o HeroID para que story_intro saiba qual história contar.
- *
- *  Cada herói tem uma especialidade diferente:
- *    Seiya → equilibrado, velocidade alta
- *    Shun → defesa alta, mais tanque
- *    Shiryu → ataque alto, mais frágil
- * ═══════════════════════════════════════════════════════════════════ */
+/*  story_character_select
+
+  Exibe os três personagens com seus atributos e ASCII art.
+  Inicializa o `player` com os atributos do escolhido.
+  Retorna o HeroID para que story_intro saiba qual história contar.
+
+  Cada herói tem uma especialidade diferente:
+    Seiya → equilibrado, velocidade alta
+    Shun → defesa alta, mais tanque
+    Shiryu → ataque alto, mais frágil
+*/
 HeroID story_character_select(Character *player)
 {
     ui_clear();
@@ -74,7 +71,7 @@ HeroID story_character_select(Character *player)
     printf(ANSI_BOLD "  Escolha: " ANSI_RESET);
     int choice = ui_read_int(1, 3);
 
-    /* Inicializa o personagem com os atributos do escolhido */
+    // Inicializa o personagem com os atributos do escolhido
     switch (choice)
     {
     case 1:
@@ -89,12 +86,11 @@ HeroID story_character_select(Character *player)
     }
 }
 
-/* ═══════════════════════════════════════════════════════════════════
- *  story_intro
- *
- *  Texto de introdução personalizado por personagem.
- *  Cada herói tem sua motivação para aceitar o desafio de Pegasus.
- * ═══════════════════════════════════════════════════════════════════ */
+/*
+    story_intro
+    Texto de introdução personalizado por personagem.
+    Cada herói tem sua motivação para aceitar o desafio de Pegasus.
+ */
 void story_intro(HeroID hero)
 {
     ui_clear();
@@ -136,12 +132,11 @@ void story_intro(HeroID hero)
     ui_pause();
 }
 
-/* ═══════════════════════════════════════════════════════════════════
- *  story_phase_intro
- *
- *  Texto de transição antes de cada combate.
- *  Apresenta o inimigo com um pouco de drama.
- * ═══════════════════════════════════════════════════════════════════ */
+/*
+   story_phase_intro
+   Texto de transição antes de cada combate.
+   Apresenta o inimigo com um pouco de drama.
+*/
 void story_phase_intro(int phase)
 {
     ui_clear();
@@ -193,13 +188,12 @@ void story_phase_intro(int phase)
     ui_pause();
 }
 
-/* ═══════════════════════════════════════════════════════════════════
- *  story_victory
- *
- *  Tela final de vitória.
- *  Desempilha e exibe todo o histórico da batalha
- *  do mais recente ao mais antigo.
- * ═══════════════════════════════════════════════════════════════════ */
+/*
+   story_victory
+   Tela final de vitória.
+   Desempilha e exibe todo o histórico da batalha
+   do mais recente ao mais antigo.
+*/
 void story_victory(ActionStack *history)
 {
     ui_clear();
@@ -213,7 +207,7 @@ void story_victory(ActionStack *history)
     printf("  ############################################\n");
     printf(ANSI_RESET);
 
-    /* Exibe o log completo desempilhando */
+    // Exibe o log completo desempilhando
     printf(ANSI_BOLD "\n  [ LOG COMPLETO DA JORNADA ]\n\n" ANSI_RESET);
 
     char msg[256];
@@ -228,9 +222,8 @@ void story_victory(ActionStack *history)
     ui_pause();
 }
 
-/* ═══════════════════════════════════════════════════════════════════
- *  story_game_over
- * ═══════════════════════════════════════════════════════════════════ */
+//  story_game_over
+
 void story_game_over(void)
 {
     ui_clear();

@@ -2,7 +2,7 @@
 # declaração das variáveis para o compilador, flags de compilação, arquivos fonte e teste
 CC      = gcc
 CFLAGS  = -Wall -Wextra -g -Iinclude 
-SRC     = src/story.c src/character.c src/stack.c src/queue.c src/fsm.c src/enemies.c src/ui.c src/combat.c
+SRC     = src/story.c src/character.c src/stack.c src/queue.c src/fsm.c src/enemies.c src/ui.c src/combat.c src/ascii.c
 MAIN    = src/main.c
 TEST    = src/test.c
  # Makefile é usado para compilar o programa de teste(alvo "test") e para limpar os arquivos compilados(alvo "clean")
