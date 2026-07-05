@@ -10,28 +10,14 @@ void story_title_screen(void)
 
     printf(ANSI_YELLOW ANSI_BOLD);
     printf("\n\n");
-    printf("       ||     EM BUSCA DO BARALHO PROIBIDO         ||\n");
+    printf(ANSI_BOLD "                  ##               EM BUSCA DO BARALHO PROIBIDO               ##\n\n");
     printf(ANSI_RESET);
 
     printf(ANSI_CYAN);
-    draw_ascii_art_pegasus();
-    printf("\n     Pegasus te desafia a cruzar o Reino dos Duelistas.\n");
-    printf("       Tres criaturas se erguem entre voce e o baralho.\n");
-    printf("       Apenas o coracao mais valente vencera!!!.\n");
+    draw_castle(); // acoplei a intro com a imagem do castelo, para dar mais impacto visual
     printf(ANSI_RESET);
 
     ui_pause();
-}
-
-/*ASCII art dos personagens
-
- Exibidos durante a seleção. Estilo simples que funciona em
- qualquer terminal sem dependências externas. */
-static void print_saints(void)
-{
-    printf(ANSI_GRAY);
-    draw_ascii_trio();
-    printf(ANSI_RESET);
 }
 
 /*  story_character_select
@@ -50,18 +36,19 @@ HeroID story_character_select(Character *player)
     ui_clear();
 
     printf(ANSI_BOLD "\n  === ESCOLHA SEU PERSONAGEM ===\n\n" ANSI_RESET);
-
+    // todos as ascii da glr
+    draw_trio();
     // seiya
-    print_saints();
+    printf("\n");
     printf(ANSI_BLUE ANSI_BOLD "  1. SEIYA\n" ANSI_RESET);
     printf("     HP: 150 | ATK: 25 | DEF: 10 | VEL: 15\n");
-    printf("     O obstinado Cavaleiro de Pegaso que se move num piscar de olhos, sempre pronto para superar qualquer barreira pela justica e por Atena.\n\n");
+    printf("     O obstinado Cavaleiro de Pegaso que se move num piscar de olhos, sempre pronto para superar qualquer barreira pela justica e por Atena.\n");
 
     // shun
 
     printf(ANSI_MAGENTA ANSI_BOLD "  2. SHUN\n" ANSI_RESET);
     printf("     HP: 180 | ATK: 20 | DEF: 16 | VEL: 11\n");
-    printf("     O pacifista Cavaleiro de Andromeda que ergue uma barreira intransponivel ao seu redor, mas prefere sempre a via da diplomacia e da protecao.\n\n");
+    printf("     O pacifista Cavaleiro de Andromeda que ergue uma barreira intransponivel ao seu redor, mas prefere sempre a via da diplomacia e da protecao.\n");
 
     // shiryu
     printf(ANSI_GREEN ANSI_BOLD "  3. SHIRYU\n" ANSI_RESET);
