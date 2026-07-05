@@ -1,7 +1,6 @@
 // Histórico de ações
 #ifndef STACK_H
 #define STACK_H
-#include "character.h"
 #define STACK_MAX 128     // quantidade máxima de ações na pilha
 #define STACK_MSG_LEN 256 // tamanho máximo da mensagem de cada ação
 typedef struct

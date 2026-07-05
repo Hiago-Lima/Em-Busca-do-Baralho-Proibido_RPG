@@ -18,7 +18,7 @@ typedef struct
     StatusEffect status;
 } Character;
 
-void character_init(Character *c, const char *name, int hp, int atk, int def, int spd); // copia os parametros, durante a execução o character ja vai existir por sí, ai inicializa aq
+void character_init(Character *c, const char *name, int hp, int atk, int def, int spd); // copia os parâmetros, durante a execução o character ja vai existir por sí, ai inicializa aq
 
 int character_take_damage(Character *c, int damage);                   // dano tomado
 int character_calculate_damage(const Character *attacker, int strong); // dano causado, o strong é um multiplicador de dano, usado para ataques fortes
