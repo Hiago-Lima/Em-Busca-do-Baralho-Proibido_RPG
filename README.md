@@ -1,6 +1,6 @@
 # Em-Busca-do-Baralho-Proibido_RPG
 
-Jogo de RPG por turnos no terminal inspirado em Yu-Gi-Oh! e Cavaleiros do Zodíaco, feito em C puro para a disciplina de Estrutura de Dados. O jogo usa três estruturas de dados para resolver problemas reais de um sistema de combate: **fila circular**, **pilha** e **grafo**.
+Jogo de RPG por turnos no terminal inspirado em Yu-Gi-Oh! e Cavaleiros do Zodíaco, feito em C puro para a disciplina de Algoritmos e Estrutura de Dados. O jogo usa três estruturas de dados para resolver problemas reais de um sistema de combate: **fila circular**, **pilha** e **grafo**.
 
 ## Sobre
 
@@ -64,7 +64,7 @@ O jogador escolhe um dos três Cavaleiros de Bronze (Seiya, Shun ou Shiryu), cad
 
 A fila decide quem age em cada turno, ordenando os personagens por velocidade (`spd`). Implementada como um buffer circular de tamanho fixo (`QUEUE_MAX`), com `front` e `size` controlando a posição lógica sem precisar deslocar todo o array. A ideia de utilizar a fila é justamente por atender ao modelo de turnos que um rpg exige.
 
-#### Funções principais: 
+#### Funções principais:
 
 - `insertqueue`: insere um personagem na posição correta (por velocidade), abrindo espaço via rotação circular.
 - `queue_peek`: consulta quem age agora, sem remover.
@@ -123,7 +123,7 @@ make clean    # se quiser, depois, use este comando que remove o executável ger
 ```
 
 ## Fluxo do jogo
- 
+
 1. Tela de título e seleção de personagem.
 2. Introdução com narração de acordo com o cavaleiro escolhido.
 3. Três fases de combate, cada uma com um inimigo diferente e sua própria FSM.
